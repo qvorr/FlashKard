@@ -16,10 +16,15 @@ function App() {
     incr(count+1)
   }
 
-  function appendWord(danish, english) {
-    const newWord = { id: words[words.length - 1 ].id + 1, danish: danish, english: english };
-    const newWords = [...words, newWord];
-    addWord(newWords);
+  function appendWord() {
+    if (danishWord != "" && englishWord != "") {
+      const newWord = { id: words[words.length - 1 ].id + 1, danish: danishWord, english: englishWord }; const newWords = [...words, newWord];
+      addWord(newWords);
+      return true;
+    } else {
+      return false;
+    }
+    
   }
 
   let [danishWord, setDanishWord] = useState('');
@@ -33,6 +38,16 @@ function App() {
         break;
     }
   }
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (appendWord() == true) {
+      setDanishWord('');
+      setEnglishWord('');
+      
+    }
+    
+  }
+  
   
   return (
     <main>
@@ -42,10 +57,23 @@ function App() {
         <button onClick={inc}>Increment</button>
         <p>{count}</p>
         <p>Add word</p>
-        <input onChange={event => setWord(event.target.value, true)} value={ danishWord } type='text' id='danishWord' placeholder='Danish'></input>
-        <input onChange={event => setWord(event.target.value, false) } value={ englishWord } type='text' id='englishWord' placeholder='English'></input>
-        <br />
-        <button onClick={() => appendWord(danishWord, englishWord)}>Add</button>
+        
+        <form onSubmit={handleSubmit}>
+          <input onChange={event => setWord(event.target.value, true)}
+            value={danishWord}
+            type='text'
+            id='danishWord'
+            placeholder='Danish'></input>
+          
+          <input onChange={event => setWord(event.target.value, false)}
+            value={englishWord}
+            type='text'
+            id='englishWord'
+            placeholder='English'></input>
+          <br />
+          <button type="submit">Add</button>
+        </form>
+        
         <VocabList words={words} />
       </div>
     </main>
