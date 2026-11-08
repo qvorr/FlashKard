@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import './MainScreen.css'
+import './MenuBars.jsx'
 import VocabList from './VocabList.jsx';
 import AddWordForm from './AddWordForm.jsx';
+import WordView from './WordView.jsx'
 
-export default function MainScreen(){
+export default function WordScreen(){
   let [count, incr] = useState(0);
   
     
@@ -15,12 +18,23 @@ export default function MainScreen(){
   ])
   return (
     <div>
-      <button onClick={() => incr(count+1)}>Increment</button>
-      <p>{count}</p>
-      <p>Add word</p>
-        
-      <AddWordForm words={words} addWord={addWord} />
-      <VocabList words={words} />
+      <div className="bar-layout search-top-wrapper">
+        <div className="search-bar">
+          search
+        </div>
+        <div className="add-card btn">+ add card</div>
+      </div>  
+      <WordView />
     </div>
   )
+  // return (
+  //   <div>
+  //     <button onClick={() => incr(count+1)}>Increment</button>
+  //     <p>{count}</p>
+  //     <p>Add word</p>
+  //       
+  //     <AddWordForm words={words} addWord={addWord} />
+  //     <VocabList words={words} />
+  //   </div>
+  // )
 }

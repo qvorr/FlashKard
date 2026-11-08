@@ -2,7 +2,7 @@
 import './App.css'
 // import { Greeting, Farewell } from './components/Greeting.jsx'
 import { TopBar, BottomBar, SelectorBar} from './components/MenuBars.jsx';
-import MainScreen from './components/MainScreen.jsx';
+import WordScreen from './components/MainScreen.jsx';
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
       <div className='menu'>
         <TopBar />
         <SelectorBar />
-        <MainScreen />
+        <WordScreen />
         <BottomBar />
       </div>
     </main>
