@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './MainScreen.css'
 import './MenuBars.jsx'
-import VocabList from './VocabList.jsx';
-import AddWordForm from './AddWordForm.jsx';
-import WordView from './WordView.jsx'
+// import VocabList from './VocabList.jsx';
+// import AddWordForm from './AddWordForm.jsx';
+import DisplayWords from './DisplayWords.jsx'
 
 export default function WordScreen(){
   let [count, incr] = useState(0);
@@ -11,20 +11,21 @@ export default function WordScreen(){
     
   
   let [words, addWord] = useState([
-    {id: 1, danish: "kat", english: "cat"},
-    {id: 2, danish: "hund", english: "dog"},
-    {id: 3, danish: "mor", english: "mother"},
-    {id: 4, danish: "far", english: "father"}
+    {id: 1, gender:"en", danish: "kat", english: "cat", difficulty:1},
+    {id: 2, gender:"et", danish: "hund", english: "dog", difficulty:1},
+    {id: 3, gender:"et", danish: "mor", english: "mother", difficulty:2},
+    {id: 4, gender:"et", danish: "far", english: "father", difficulty:4},
+    {id: 5, gender:"en", danish: "søster", english: "sister", difficulty:4},
   ])
   return (
     <div>
-      <div className="bar-layout search-top-wrapper">
+      <div className="bar-layout search-wrapper">
         <div className="search-bar">
           search
         </div>
         <div className="add-card btn">+ add card</div>
       </div>  
-      <WordView />
+      <DisplayWords words={words} addWord={addWord} />
     </div>
   )
   // return (

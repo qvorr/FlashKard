@@ -1,0 +1,36 @@
+.word-line{
+  display:flex;
+  align-items: center;
+  gap:10px;
+}
+
+
+.word-item{
+  padding:1em;
+}
+
+.word-item:hover{
+  background-color:steelblue;
+}
+
+.wordENG, .wordDK{
+  flex:1;
+  max-width:25%;
+}
+
+.wordENG{
+  text-align: right;
+}
+
+.word-item.gender{
+  margin-right:-10px;
+}
+
+.word-item.wordDK{
+  padding-left:0.2em;
+}
+
+.flex-align-right{
+  margin-right: 0;
+  margin-left: auto;
+}

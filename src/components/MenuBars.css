@@ -12,11 +12,11 @@
   background-color:blue;
 }
 
-.selectorBar{
+.toolkit-bar{
   justify-content: space-between;
 }
 
-.item-push-to-other-side{
+.flex-align-right{
   margin-right: 0;
   margin-left: auto;
 }

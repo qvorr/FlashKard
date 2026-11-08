@@ -1,21 +1,21 @@
 import '../App.css';
 import './MenuBars.css';
 
-function TopBar() {
+function TitleBar() {
   return (
-    <div className='bar-layout outline'>
+    <div className='bar-layout'>
       <div className="item"><strong>FlashKard</strong></div>
       <div id="card" className="item">card</div>
       <div id="stats" className="item">stats</div>
-      <div id="settings" className="item item-push-to-other-side">settings</div>
+      <div id="settings" className="item flex-align-right">settings</div>
       <div id="about" className="item">about</div>
     </div>
   )
 }
 
-function SelectorBar() {
+function ToolkitBar() {
   return (
-    <div className='bar-layout selectorBar outline'>
+    <div className='bar-layout toolkit-bar'>
       <div className='item'>deck:
         {/* TODO add gap between deck: and dropdown */}
         <select name="language" id="language">
@@ -36,4 +36,4 @@ function BottomBar() {
 
 }
 
-export { TopBar, BottomBar, SelectorBar};
+export { TitleBar, ToolkitBar, BottomBar};

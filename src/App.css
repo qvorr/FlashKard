@@ -10,17 +10,3 @@ main {
   display:flex;
   flex-direction: column;
 }
-
-.outline{
-  border:dashed white;
-  border-color:steelblue
-}
-
-
-/*.sideBar{
-  
-}
-
-.mainScreen{
-  
-}*/

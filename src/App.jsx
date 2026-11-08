@@ -1,7 +1,8 @@
 // import { useState } from 'react'
 import './App.css'
+import './components/utilities.css'
 // import { Greeting, Farewell } from './components/Greeting.jsx'
-import { TopBar, BottomBar, SelectorBar} from './components/MenuBars.jsx';
+import { TitleBar, ToolkitBar, BottomBar} from './components/MenuBars.jsx';
 import WordScreen from './components/MainScreen.jsx';
 
 function App() {
@@ -9,8 +10,8 @@ function App() {
   return (
     <main className='set-background'>
       <div className='menu'>
-        <TopBar />
-        <SelectorBar />
+        <TitleBar />
+        <ToolkitBar />
         <WordScreen />
         <BottomBar />
       </div>
