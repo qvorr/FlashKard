@@ -1,7 +1,7 @@
 import './DisplayWords.css'
 import './utilities.css'
 
-export default function WordView({words, addWord}) {
+export default function WordView({words}) {
   const items = words.map(word =>
     <div className='word-line' key={word.id}>
       <div className="status word-item">[diff:{word.difficulty}]</div>

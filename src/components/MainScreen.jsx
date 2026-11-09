@@ -4,9 +4,10 @@ import './MenuBars.jsx'
 // import VocabList from './VocabList.jsx';
 // import AddWordForm from './AddWordForm.jsx';
 import DisplayWords from './DisplayWords.jsx'
+import AddWordForm from './AddWordForm.jsx'
 
 export default function WordScreen(){
-  let [count, incr] = useState(0);
+  // let [count, incr] = useState(0);
   
     
   
@@ -17,15 +18,19 @@ export default function WordScreen(){
     {id: 4, gender:"et", danish: "far", english: "father", difficulty:4},
     {id: 5, gender:"en", danish: "søster", english: "sister", difficulty:4},
   ])
+
+  let [wordWindow, showNewWordWindow] = useState(false);
+
   return (
     <div>
       <div className="bar-layout search-wrapper">
         <div className="search-bar">
           search
         </div>
-        <div className="add-card btn">+ add card</div>
+        <div className="add-card btn" onClick={() => showNewWordWindow(!wordWindow)}>+ add card</div>
+        {wordWindow && (<AddWordForm words={words} addWord={addWord}/>)}
       </div>  
-      <DisplayWords words={words} addWord={addWord} />
+      <DisplayWords words={words}/>
     </div>
   )
   // return (

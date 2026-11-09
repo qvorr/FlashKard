@@ -6,7 +6,8 @@
 
 
 .word-item{
-  padding:1em;
+  padding:0.3em 1em;
+  margin-bottom:0.3em;
 }
 
 .word-item:hover{
@@ -24,6 +25,8 @@
 
 .word-item.gender{
   margin-right:-10px;
+  width:5ch;
+  text-align:right;
 }
 
 .word-item.wordDK{
