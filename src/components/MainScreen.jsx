@@ -8,7 +8,6 @@ import AddWordForm from './AddWordForm.jsx'
 
 export default function WordScreen(){
   // let [count, incr] = useState(0);
-  
     
   
   let [words, addWord] = useState([
@@ -19,7 +18,7 @@ export default function WordScreen(){
     {id: 5, gender:"en", danish: "søster", english: "sister", difficulty:4},
   ])
 
-  let [wordWindow, showNewWordWindow] = useState(false);
+  let [wordWindow, showWordWindow] = useState(false);
 
   return (
     <div>
@@ -27,7 +26,7 @@ export default function WordScreen(){
         <div className="search-bar">
           search
         </div>
-        <div className="add-card btn" onClick={() => showNewWordWindow(!wordWindow)}>+ add card</div>
+        <div className="add-card btn" onClick={() => showWordWindow(!wordWindow)}>+ add card</div>
         {wordWindow && (<AddWordForm words={words} addWord={addWord}/>)}
       </div>  
       <DisplayWords words={words}/>
