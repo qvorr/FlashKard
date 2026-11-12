@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './AddWordForm.css'
 
-export default function AppWordForm({ words, addWord }) {
+export default function AppWordForm({ words, setWord }) {
   let [danishWord, setDanishWord] = useState('');
   let [englishWord, setEnglishWord] = useState('');
   
@@ -10,14 +10,15 @@ export default function AppWordForm({ words, addWord }) {
     const splitWord = word.split(" ");
     console.log(splitWord)
     if (splitWord.length < 2) {
-      return "";
+      return [" ", word];
     }
     switch (splitWord[0]) {
       case "en": return ["en", word.substring(3)];
       case "et": return ["et", word.substring(3)];
-      default: return "";
+      default: return [" ", word];
     }
   }
+  
   
   function handleSubmit(event) {
     event.preventDefault();
@@ -25,27 +26,30 @@ export default function AppWordForm({ words, addWord }) {
       return;
     }
     const genderPlusWord = selectGender(danishWord)
+    const gender = genderPlusWord[0];
+    const dk = genderPlusWord[1];
+    const eng = englishWord;
+
+    window.iMadeAPI.appendWord(gender, dk, eng)
+    
     
     const newWord = {
       id: words[words.length - 1].id + 1,
-      gender: genderPlusWord[0],
-      danish: genderPlusWord[1],
-      english: englishWord,
+      gender: gender,
+      danish: dk,
+      english: eng,
       difficulty: 1
     };
     const newWords = [...words, newWord];
-    addWord(newWords);
+    setWord(newWords);
     setDanishWord('');
     setEnglishWord('');
   }
   
-  const handleKeyDown = (event) => {
-    console.log(event.key);
-  };
   
   
   return (
-    <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
+    <form onSubmit={handleSubmit}>
       <div className="englishPlaceholder">english</div>
       <input onChange={event => setEnglishWord(event.target.value)}
         value={englishWord}
@@ -60,9 +64,9 @@ export default function AppWordForm({ words, addWord }) {
         id='danishWord'
         className='textField'
         placeholder='Danish'></input>
-      {/* TODO use string to select 'en/et'*/}
       <button type="submit">Add</button>
     </form>
+    
   )
   
 }

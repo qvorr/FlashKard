@@ -2,6 +2,8 @@ import './DisplayWords.css'
 import './utilities.css'
 
 export default function WordView({words}) {
+  console.log("this the shit wordView recieves");
+  console.log(words)
   const items = words.map(word =>
     <div className='word-line' key={word.id}>
       <div className="status word-item">[diff:{word.difficulty}]</div>

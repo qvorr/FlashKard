@@ -5,20 +5,33 @@ import './MenuBars.jsx'
 // import AddWordForm from './AddWordForm.jsx';
 import DisplayWords from './DisplayWords.jsx'
 import AddWordForm from './AddWordForm.jsx'
+import { useEffect } from 'react'
 
 export default function WordScreen(){
   // let [count, incr] = useState(0);
     
   
-  let [words, addWord] = useState([
-    {id: 1, gender:"en", danish: "kat", english: "cat", difficulty:1},
-    {id: 2, gender:"et", danish: "hund", english: "dog", difficulty:1},
-    {id: 3, gender:"et", danish: "mor", english: "mother", difficulty:2},
-    {id: 4, gender:"et", danish: "far", english: "father", difficulty:4},
-    {id: 5, gender:"en", danish: "søster", english: "sister", difficulty:4},
-  ])
+  let [words, setWord] = useState([]);
 
+  async function getRealWords() {
+    const result =  await window.iMadeAPI.getWords();
+    console.log("this shi from mainScreen")
+    console.log(result);
+    return result;
+  }
+  
   let [wordWindow, showWordWindow] = useState(false);
+
+  useEffect(() => {
+    async function getWords() {
+      const result = await window.iMadeAPI.getWords();
+      setWord(result);
+    }
+
+    getWords();
+  }, []);
+
+  
 
   return (
     <div>
@@ -27,7 +40,7 @@ export default function WordScreen(){
           search
         </div>
         <div className="add-card btn" onClick={() => showWordWindow(!wordWindow)}>+ add card</div>
-        {wordWindow && (<AddWordForm words={words} addWord={addWord}/>)}
+        {wordWindow && (<AddWordForm words={words} addWord={setWord}/>)}
       </div>  
       <DisplayWords words={words}/>
     </div>
